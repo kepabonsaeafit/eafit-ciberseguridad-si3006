@@ -1,0 +1,17 @@
+# Entornos y dependencias
+node_modules/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# No subir capturas de pantalla completas del taller (van en el Google Doc / PPT)
+# Solo evidencia técnica puntual referenciada desde el código
