@@ -15,8 +15,9 @@ firmar contrato de pruebas ofensivas.
   gestor de BD (`10.10.1.99`) y la API. Hoy están en el mismo `/24`, lo que facilita movimiento
   lateral si un endpoint de empleado es comprometido.
 - **Endurecer la API del puerto 5000:** validar que tenga autenticación/autorización, control de
-  entrada (evitar *path traversal* o *SSRF* en la lógica de "redirección de servicios" y manejo
-  de archivos Excel), y que no esté expuesta más allá de lo necesario.
+  entrada (evitar *path traversal* o **SSRF — A01:2025 Broken Access Control (Server-Side Request
+  Forgery) del OWASP Top 10 2025** en la lógica de "redirección de servicios" y manejo de archivos
+  Excel), y que no esté expuesta más allá de lo necesario.
 - **Controlar el DHCP:** implementar reservas o **NAC (Network Access Control)** y logging de
   asignaciones, ya que IPs dinámicas dificultan la trazabilidad de quién hizo qué en la red.
 - **Firewall interno / ACLs** entre segmentos, restringiendo qué IPs pueden llegar al host de BD.

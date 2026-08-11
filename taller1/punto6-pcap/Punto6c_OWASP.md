@@ -2,7 +2,7 @@
 
 ## Vulnerabilidad identificada
 
-**A02:2021 – Cryptographic Failures** (Fallos Criptográficos), categoría del OWASP Top 10 2021.
+**A04:2025 – Cryptographic Failures** (Fallos Criptográficos), categoría del OWASP Top 10 2025.
 
 ## Explicación
 
@@ -21,11 +21,18 @@ local o acceso a un punto intermedio de la comunicación) puede leer el contenid
 petición y la respuesta sin ningún esfuerzo de descifrado, tal como se demostró al aplicar el
 filtro `http` y usar la función *Follow HTTP Stream* en Wireshark.
 
-Esto encaja directamente en **A02:2021 – Cryptographic Failures**, ya que la causa raíz no es una
+Esto encaja directamente en **A04:2025 – Cryptographic Failures**, ya que la causa raíz no es una
 falla de autenticación o autorización, sino la **ausencia de cifrado en tránsito** para datos que
 deberían protegerse (credenciales, tokens, información confidencial, etc.). El Top 10 de OWASP
 describe este riesgo como la transmisión de datos sensibles en claro por protocolos como HTTP,
 FTP o SMTP, lo cual permite ataques de intercepción (*man-in-the-middle*, *network sniffing*).
+
+> Nota: en el `.pcap` analizado (`FollowTheLeader.pcap`) el único dato sensible expuesto en claro
+> fue la flag del reto (`ctfa{terrific_traffic}`), no credenciales de usuario/contraseña — la
+> captura completa consta de 10 paquetes: handshake TCP, un `GET /` y la respuesta HTTP con la
+> flag. El enunciado del punto pide identificar credenciales expuestas; en este `.pcap` no viajó
+> ningún usuario/contraseña, por lo que el hallazgo reportable es la flag en texto plano como
+> evidencia del mismo problema de fondo (transmisión sin cifrar).
 
 ## Impacto
 
