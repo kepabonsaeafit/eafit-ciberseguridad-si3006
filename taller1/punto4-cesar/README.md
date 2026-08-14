@@ -1,23 +1,36 @@
-# Punto 4 — Cifrado César
+# Cifrado César — Taller 1 Ciberseguridad SI3006 (EAFIT)
 
 **Responsable:** Santiago
 
-## Qué debe quedar en esta carpeta
+## Qué hay en esta carpeta
 
-- Tu script o aplicación que cifre y descifre con César, permitiendo escoger
-  la llave numérica (en el lenguaje que prefieras).
-- `pruebas.md` — evidencia de las 5 pruebas pedidas por el enunciado:
+- ✅ `cifrado_cesar.py` — script que cifra y descifra con César, permitiendo
+  escoger la llave numérica.
+- ✅ `pruebas.md` — evidencia de las 5 pruebas pedidas por el enunciado,
+  incluyendo una con llave mayor a 26 (llaves 30 y 100) y una con
+  caracteres especiales (números, signos y tildes).
 
-| # | Texto de entrada | Llave | Cifrado | Descifrado |
-|---|---|---|---|---|
-| 1 | | | | |
+Script en Python que **cifra y descifra** con el algoritmo César permitiendo escoger la llave numérica.
 
-Incluye al menos una prueba con llave mayor a 26 y una con caracteres
-especiales — son los casos donde el algoritmo suele fallar si no se maneja
-bien el módulo.
+## Uso
+```bash
+python3 cifrado_cesar.py
+```
+Menú:
+1. Cifrar (pide texto y llave)
+2. Descifrar (pide texto y llave)
+3. Salir
 
-## Cómo subir
+## Cómo funciona
+- Fórmula: `(letra − base + llave) % 26 + base` con base `'A'=65` / `'a'=97`.
+- El `% 26` permite llaves mayores a 26 y negativas (dan la vuelta al alfabeto).
+- Mayúsculas y minúsculas se tratan por separado.
+- Números, espacios, tildes y signos se conservan intactos.
+- Descifrar = cifrar con `−llave`.
 
-Sube el script y `pruebas.md` directo a esta carpeta (ver instrucciones en el
-README raíz del repo). El README del repo raíz explica el flujo paso a paso
-si no has usado GitHub antes.
+## Pruebas realizadas
+
+Las 5 pruebas exigidas por el enunciado (incluyendo una con llave mayor a
+26 y una con caracteres especiales) están documentadas en `pruebas.md`,
+en esta misma carpeta, con la tabla completa, la transcripción de cada
+corrida y la verificación matemática de cada resultado.
