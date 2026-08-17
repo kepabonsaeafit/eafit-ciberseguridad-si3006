@@ -61,7 +61,8 @@ Cuando pidió la contraseña escribimos `bandit0` y presionamos Enter. Al entrar
 
 Este nivel no tiene contraseña que buscar, la contraseña ya nos la daba la página. Lo único que se pedía era lograr la conexión.
 
-![Conexión al nivel 0](images/00-conexion.png)
+<img width="1050" height="811" alt="image" src="https://github.com/user-attachments/assets/25ce15ee-7641-4957-a335-dbdf401f8eea" />
+
 
 ---
 
@@ -93,7 +94,8 @@ The password you are looking for is: 6y2kwnwK6grgvwvpvLaa2T1cpFEKOhNR
 
 **Flag encontrada:** `6y2kwnwK6grgvwvpvLaa2T1cpFEKOhNR`
 
-![Nivel 0 al 1](images/01-nivel0-1.png)
+<img width="1050" height="239" alt="image" src="https://github.com/user-attachments/assets/704515b2-dc62-4a56-9d87-21083f419ef5" />
+
 
 ---
 
@@ -125,7 +127,10 @@ cat ./-
 
 **Flag encontrada:** `PK8fYLZg2hnHSz83plBL1iEPKdD3QToB`
 
-![Nivel 1 al 2](images/02-nivel1-2.png)
+
+
+<img width="984" height="158" alt="image" src="https://github.com/user-attachments/assets/5f8eefaf-f881-4639-a640-4e9fa93e1638" />
+
 
 ---
 
@@ -151,7 +156,9 @@ cat "./--spaces in this filename--"
 
 **Flag encontrada:** `7ZZ2LFrykP2zEyvBl4m3clcL7tGYJPME`
 
-![Nivel 2 al 3](images/03-nivel2-3.png)
+
+<img width="1050" height="114" alt="image" src="https://github.com/user-attachments/assets/0b527d96-1c0c-4bd3-9c26-de6d036e15c9" />
+
 
 ---
 
@@ -177,7 +184,9 @@ cat "inhere/...Hiding-From-You"
 
 **Flag encontrada:** `xzTXq1rDJQVVAzdv5cHq1TQytTWufAMq`
 
-![Nivel 3 al 4](images/04-nivel3-4.png)
+
+<img width="1050" height="172" alt="image" src="https://github.com/user-attachments/assets/55a5d329-dfc0-4888-8698-6718ca63d105" />
+
 
 ---
 
@@ -214,7 +223,9 @@ cat ./-file07
 
 **Flag encontrada:** `6C7h9GD8M6ai5nr7wo1RonrzFjj9yIrG`
 
-![Nivel 4 al 5](images/05-nivel4-5.png)
+
+<img width="1050" height="555" alt="image" src="https://github.com/user-attachments/assets/8656f33a-b172-440e-86b1-29b8f0a6e1db" />
+
 
 ---
 
@@ -246,7 +257,9 @@ cat inhere/maybehere07/.file2
 
 **Flag encontrada:** `pXa26xhMWaC2SvDotA4r9EgZkulOeSBW`
 
-![Nivel 5 al 6](images/06-nivel5-6.png)
+
+<img width="1050" height="143" alt="image" src="https://github.com/user-attachments/assets/66b68ed2-bb85-4429-be2b-7f5ecaaf5114" />
+
 
 ---
 
@@ -276,7 +289,8 @@ cat /var/lib/dpkg/info/bandit7.password
 
 **Flag encontrada:** `Bmnnvf82KzQlfxgAI2d1zYbr1u9pr3E3`
 
-![Nivel 6 al 7](images/07-nivel6-7.png)
+<img width="1050" height="162" alt="image" src="https://github.com/user-attachments/assets/4cad08c0-5253-4965-9fc4-20413769f428" />
+
 
 ---
 
@@ -302,7 +316,7 @@ millionth      VR1ljMayciFxbnUokuQmJFw6QC9VKtub
 
 **Flag encontrada:** `VR1ljMayciFxbnUokuQmJFw6QC9VKtub`
 
-![Nivel 7 al 8](images/08-nivel7-8.png)
+<img width="928" height="142" alt="image" src="https://github.com/user-attachments/assets/30079ce4-a086-4006-9caf-89345df8fc88" />
 
 ---
 
@@ -324,7 +338,7 @@ Esto era necesario porque `uniq` solo compara líneas que estén seguidas; si no
 
 **Flag encontrada:** `EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl`
 
-![Nivel 8 al 9](images/09-nivel8-9.png)
+<img width="881" height="145" alt="image" src="https://github.com/user-attachments/assets/ce88ea97-88d2-4e4e-8111-68e26a32837e" />
 
 ---
 
@@ -353,7 +367,9 @@ Entre los resultados aparecieron cuatro líneas que, leídas seguidas, decían *
 
 **Flag encontrada:** `B0s2khmbT9u0geKuOoVGW3JZKhndE3BG`
 
-![Nivel 9 al 10](images/10-nivel9-10.png)
+
+<img width="894" height="584" alt="image" src="https://github.com/user-attachments/assets/ae44545b-dc27-430a-9b98-21158a3f918c" />
+
 
 ---
 
@@ -389,7 +405,7 @@ The password is pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro
 
 **Flag encontrada:** `pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro`
 
-![Nivel 10 al 11](images/11-nivel10-11.png)
+<img width="1050" height="184" alt="image" src="https://github.com/user-attachments/assets/99c61f04-094d-43c6-8c78-b80cbdf76951" />
 
 ---
 
