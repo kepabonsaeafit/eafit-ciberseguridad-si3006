@@ -1,4 +1,4 @@
-# Punto 9 — Arquitectura Cloud
+# Punto 10 — Arquitectura Cloud
 ### Servicios, protocolos o sistemas de seguridad perimetral se deben de añadir a la arquitectura para mejorar su seguridad
 Para mejorar la seguridad de la arquitectura se deben de añadir estos servicios, protocolos y sistemas de seguridad perimetral:
 
