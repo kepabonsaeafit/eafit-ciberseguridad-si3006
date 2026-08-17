@@ -21,3 +21,4 @@ Para mejorar la seguridad de la arquitectura se deben de añadir estos servicios
 Estos servicios, protocolos y sistemas de seguridad perimetral crean diferentes capaz de proteccion para que el usuario solo pueda accedes al punto de entrada autorizado, mientras que los microservicios y las bases de datos mantengan aislados y protegidos. 
 
 ### Nuevo modelo de arquitectura basado en el mostrado con las medidas de seguridad planteadas por el grupo
+<img width="976" height="1068" alt="image" src="https://github.com/user-attachments/assets/5703527e-bf16-453a-8000-d32da4e48c1d" />
