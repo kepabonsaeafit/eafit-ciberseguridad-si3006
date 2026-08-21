@@ -49,3 +49,24 @@ FTP o SMTP, lo cual permite ataques de intercepción (*man-in-the-middle*, *netw
   en vez de FTP, SSH en vez de Telnet).
 - Realizar auditorías periódicas de tráfico de red para detectar servicios que aún transmiten
   información sensible sin cifrar.
+
+## Referencias
+
+- OWASP Foundation. *OWASP Top 10 — Cryptographic Failures.*
+  https://owasp.org/Top10/ (consultado el 21 de agosto de 2026).
+- Wireshark Foundation. *Wireshark User's Guide — Following Protocol Streams.*
+  https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowStreamSection.html (consultado el 21 de agosto de 2026).
+- CTF Academy. *Network Forensics — Challenge 1.*
+  https://ctfacademy.github.io/network/challenge1/index.htm (consultado el 21 de agosto de 2026).
+
+## Qué va en la diapositiva
+
+- **Flag:** `ctfa{terrific_traffic}` — obtenida del cuerpo de una respuesta HTTP.
+- **Cómo:** filtro `http` en Wireshark → *Follow HTTP Stream* sobre la conversación
+  `10.0.2.15 → 10.0.2.5:80` (captura de 10 paquetes).
+- **Vulnerabilidad:** Cryptographic Failures (OWASP Top 10) — datos sensibles en tránsito sin cifrar.
+- **Causa raíz:** HTTP en vez de HTTPS/TLS; cualquiera que esnife la red lee todo sin descifrar nada.
+- **Impacto:** *sniffing* / MITM → robo de credenciales o secuestro de sesión si en vez de la flag
+  viajaran credenciales reales.
+- **Mitigación:** HTTPS obligatorio + HSTS, y reemplazar protocolos en claro (FTP→SFTP, Telnet→SSH).
+- *(Captura de pantalla del Follow HTTP Stream con la flag resaltada.)*

@@ -47,3 +47,35 @@ Esta información adicional es la que justifica ante el cliente por qué vale la
 ofensivo: no solo se identificaron puertos abiertos, sino una hipótesis de cadena de ataque
 (FTP/Telnet en claro → movimiento lateral → API sin validar → acceso a BD de empleados) que debe
 confirmarse con pruebas autorizadas.
+
+## Tabla resumen: puertos identificados, servicio probable y riesgo
+
+| Puerto | Servicio probable | Riesgo asociado | Recomendación |
+|--------|-------------------|-----------------|---------------|
+| 21 | FTP (transferencia de archivos) | Credenciales y datos en texto plano; posible acceso anónimo y directorios con permiso de escritura | Migrar a SFTP/FTPS o cerrar el puerto si no es indispensable |
+| 23 | Telnet (administración remota) | Usuario, contraseña y comandos en claro; interceptables con sniffing/ARP spoofing en el segmento plano | Deshabilitar Telnet y usar SSH |
+| 5000 | API HTTP de redirección de servicios / manejo de archivos Excel | Posible SSRF por la lógica de redirección, *path traversal* al leer/escribir archivos, y falta de autenticación/autorización | Autenticar, validar entradas y rutas, restringir egress y exponerla solo a lo necesario |
+| — (`10.10.1.99`) | Gestor de base de datos de empleados (motor y puerto por confirmar: 1433 / 3306 / 5432) | Acceso directo desde el mismo `/24`; movimiento lateral desde cualquier endpoint de empleado comprometido | Segmentar en VLAN aparte, ACLs de firewall y cifrado en tránsito hacia la BD |
+| — (DHCP) | Asignación dinámica de IPs en el segmento | Rogue DHCP y ARP spoofing; IPs cambiantes dificultan la trazabilidad | Reservas DHCP, NAC, DHCP snooping y logging de asignaciones |
+
+## Referencias
+
+- OWASP Foundation. *OWASP Top 10.* https://owasp.org/Top10/ (consultado el 21 de agosto de 2026).
+- NIST. *SP 800-115: Technical Guide to Information Security Testing and Assessment.*
+  https://csrc.nist.gov/pubs/sp/800/115/final (consultado el 21 de agosto de 2026).
+- Nmap Project. *Nmap Reference Guide — Service and Version Detection.*
+  https://nmap.org/book/man-version-detection.html (consultado el 21 de agosto de 2026).
+
+## Qué va en la diapositiva
+
+- **Escenario:** segmento plano `10.10.1.0/24`, IPs por DHCP, BD de empleados en `10.10.1.99`.
+- **Hallazgos:** puertos 21 (FTP), 23 (Telnet) y 5000 (API Excel) abiertos → *(mostrar la tabla
+  puerto / servicio / riesgo).*
+- **Recomendaciones clave:** matar Telnet (SSH), FTP→SFTP o cerrarlo, segmentar por VLAN + ACLs,
+  endurecer la API, controlar el DHCP (NAC / DHCP snooping).
+- **Reconocimiento adicional propuesto:** `nmap -sV -p-` a todo el segmento, banner grabbing,
+  enumeración FTP, fingerprinting de la API, identificar motor de BD.
+- **Gancho comercial (cadena de ataque hipotética):** credenciales en claro (FTP/Telnet) →
+  movimiento lateral en el `/24` → API sin validación → BD de empleados.
+- **Cierre:** el escaneo inicial ya muestra una hipótesis de compromiso completo; confirmarla
+  requiere el contrato de pruebas ofensivas.
