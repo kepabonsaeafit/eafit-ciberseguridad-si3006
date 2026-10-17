@@ -44,8 +44,9 @@ Vector: `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
 
 - **Figura 1.** Payload en el campo email del formulario de login.
   `[ESPACIO PARA IMAGEN]` → `evidencias-p1-p2/01-payload-en-formulario-login.png`
-- **Figura 2.** Petición y respuesta HTTP interceptadas, con el JWT decodificado mostrando `role: admin`.
-  `[ESPACIO PARA IMAGEN/CÓDIGO]` → `evidencias-p1-p2/02-raw-request-response.txt` (o `02-request-response-capturada.json`)
+- **Figura 2.** Petición interceptada en la pestaña **Network** de las DevTools de Chrome (equivalente al HTTP History de Burp), filtrada a `login`, mostrando el payload crudo enviado.
+  `[ESPACIO PARA IMAGEN]` → `evidencias-p1-p2/02-devtools-network-payload.png`
+  (headers y response del mismo request: `02-devtools-network-headers.png`, `02-devtools-network-response.png`; raw en texto: `02-raw-request-response.txt`)
 - **Figura 3.** Acceso al panel de administración autenticado como `admin@juice-sh.op`, sin conocer la contraseña real.
   `[ESPACIO PARA IMAGEN]` → `evidencias-p1-p2/03-autenticado-como-admin.png`
 
@@ -72,18 +73,29 @@ Vector: `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
 **P3 — Corrección de código (consultas parametrizadas en Sequelize):**
 
 ```typescript
-// Vulnerable — routes/login.ts:34
+// Vulnerable — routes/login.ts:34 (código real del repo oficial)
 models.sequelize.query(
-  `SELECT * FROM Users WHERE email = '${req.body.email}' AND password = '${hash}' AND deletedAt IS NULL`,
+  `SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${security.hash(req.body.password || '')}' AND deletedAt IS NULL`,
   { model: UserModel, plain: true }
 )
 
-// Corregido — consulta parametrizada (bind)
+// Corregido — consulta parametrizada (bind), listo para compilar
 models.sequelize.query(
-  `SELECT * FROM Users WHERE email = $1 AND password = $2 AND deletedAt IS NULL`,
-  { bind: [req.body.email, hash], model: UserModel, plain: true }
+  'SELECT * FROM Users WHERE email = $1 AND password = $2 AND deletedAt IS NULL',
+  {
+    bind: [req.body.email || '', security.hash(req.body.password || '')],
+    model: UserModel,
+    plain: true
+  }
 )
 ```
+
+> **Nota para Santiago (P3):** en el código original no existe una variable
+> `hash` predeclarada — el hash se calcula inline con
+> `security.hash(req.body.password || '')`. Si se copia el bloque corregido
+> usando `bind: [req.body.email, hash]` tal cual, TypeScript falla al
+> compilar (`Cannot find name 'hash'`). Usar el bloque de arriba tal como
+> está, que sí compila a la primera.
 
 **P4 — Control compensatorio (WAF):** desplegar un Web Application Firewall (p. ej. reglas OWASP CRS en ModSecurity, o AWS WAF) delante de `/rest/user/login` para detectar y bloquear patrones de inyección SQL (`OR 1=1`, comillas simples sin escapar, comentarios SQL `--`) como defensa en profundidad mientras se despliega el fix de código.
 

@@ -17,15 +17,31 @@ SQL en vez de usar parámetros vinculados.
 
 - `01-payload-en-formulario-login.png` — **Figura 1.** Payload en el campo
   email del login.
-- `02-raw-request-response.txt` / `02-request-response-capturada.json` —
-  **Figura 2.** Petición y respuesta interceptadas (`POST /rest/user/login`),
-  con el JWT decodificado mostrando `"role":"admin"`.
+- `02-devtools-network-payload.png` — **Figura 2 (principal).** Pestaña
+  **Network** de las DevTools de Chrome (`HTTP history`-equivalente a
+  Burp), filtrada a la petición `login`, mostrando el payload crudo en el
+  tab **Payload**: `{email: "' OR 1=1--", password: "cualquiercosa"}`.
+  - `02-devtools-network-headers.png` — mismo request, tab **Headers**
+    (método, URL, status 200 OK).
+  - `02-devtools-network-response.png` — mismo request, tab **Response**
+    (JSON con `"umail":"admin@juice-sh.op"` y el JWT).
+  - `02-raw-request-response.txt` / `02-request-response-capturada.json` —
+    la misma petición/respuesta en texto plano, con el JWT ya decodificado
+    (`"role":"admin"`). Complementa las capturas de pantalla.
 - `03-autenticado-como-admin.png` — **Figura 3.** Acceso al panel de
   administración (`/#/administration`) autenticado como `admin@juice-sh.op`,
   sin conocer la contraseña real.
 - `exploit_sqli.js` — script (Playwright) que automatiza el login con el
-  payload y captura las 3 evidencias anteriores de forma reproducible.
-  Requiere Juice Shop corriendo en `localhost:3000` (ver `../evidencia/`).
+  payload y captura las figuras 1 y 3 de forma reproducible.
+- `capture_devtools_network.js` — script (CDP/Node, sin Playwright) que
+  abre Chrome con las DevTools auto-adjuntas (`--auto-open-devtools-for-tabs`),
+  filtra la petición `login` en el panel **Network** y captura las 3
+  variantes de la Figura 2. Útil también como punto de partida para el
+  **Punto 5 (Blue Team / Monitoreo)**: ya demuestra cómo se ve el ataque
+  reflejado en una herramienta de monitoreo de red.
+
+Ambos scripts requieren Juice Shop corriendo en `localhost:3000` (ver
+`../evidencia/`).
 
 ## Reporte (4 slides)
 
