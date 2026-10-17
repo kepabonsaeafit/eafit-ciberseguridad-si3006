@@ -101,10 +101,6 @@ async function typeText(sendDev, text) {
   });
   await sleep(1200);
 
-  const shotList = await sendDev('Page.captureScreenshot', { format: 'png' });
-  fs.writeFileSync(`${OUT}/_tmp-filtered-list.png`, Buffer.from(shotList.data, 'base64'));
-  console.log('filtered list screenshot saved');
-
   // First (and only) row, right under the header
   await click(sendDev, 1083, 249);
   await sleep(600);
