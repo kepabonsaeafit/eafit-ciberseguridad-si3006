@@ -1,0 +1,25 @@
+=== docker --version ===
+Docker version 29.8.2, build 7fc2dff
+
+=== docker ps ===
+CONTAINER ID   IMAGE                   COMMAND                  CREATED          STATUS          PORTS                    NAMES
+66af33dd837e   bkimminich/juice-shop   "/nodejs/bin/node /j…"   40 seconds ago   Up 39 seconds   0.0.0.0:3000->3000/tcp   juice-shop
+
+=== curl -I http://localhost:3000 ===
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Feature-Policy: payment 'self'
+X-Recruiting: /#/jobs
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Sat, 17 Oct 2026 03:29:11 GMT
+ETag: W/"2700-1a147e80b38"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 9984
+Vary: Accept-Encoding
+Date: Sat, 17 Oct 2026 03:29:49 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
