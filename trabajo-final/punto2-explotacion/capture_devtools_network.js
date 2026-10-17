@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const PORT = 9231;
 const CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
-const OUT = '/home/user/eafit-ciberseguridad-si3006/evidencias-p1-p2';
+const OUT = '/home/user/eafit-ciberseguridad-si3006/trabajo-final/punto2-explotacion';
 const PROFILE = '/tmp/chrome-profile-devtools-final';
 
 function httpGet(path) {

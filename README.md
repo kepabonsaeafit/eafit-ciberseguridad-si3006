@@ -17,11 +17,43 @@ eafit-ciberseguridad-si3006/
 │   ├── punto6-pcap/          → David
 │   └── punto9-cloud/         → Valentina
 ├── taller-2/                 (cuando exista)
+├── trabajo-final/
+│   ├── punto1-despliegue/            → Kevin
+│   ├── punto2-explotacion/           → Kevin
+│   ├── punto3-remediacion/           → Santiago
+│   ├── punto4-arquitectura/          → (sin asignar)
+│   ├── punto5-herramienta-defensiva/ → (sin asignar)
+│   ├── punto6-politicas-estandares/  → David
+│   └── punto7-devsecops/             → Gerónimo
 └── ...
 ```
 
 Cada taller nuevo del semestre agrega una carpeta `taller-N/` al mismo repo.
 No se crea un repo por taller.
+
+## Trabajo Final
+
+Mismo esquema que los talleres: una subcarpeta `trabajo-final/puntoN-*/` por
+cada punto del enunciado, cada una con su propio README. **Escribe solo
+dentro de la carpeta de tu punto** — así nadie tiene que preguntar dónde
+sube lo suyo ni crea carpetas propias sueltas en la raíz.
+
+| Carpeta | Punto (enunciado) | % | Responsable |
+|---|---|---|---|
+| `punto1-despliegue/` | 1 — Despliegue del aplicativo | 5% | Kevin |
+| `punto2-explotacion/` | 2 — Explotación de una vulnerabilidad | 5% | Kevin |
+| `punto3-remediacion/` | 3 — Remediación de una vulnerabilidad | 10% | Santiago |
+| `punto4-arquitectura/` | 4 — Seguridad en Arquitectura | 5% | _(sin asignar)_ |
+| `punto5-herramienta-defensiva/` | 5 — Herramienta defensiva | 10% | _(sin asignar)_ |
+| `punto6-politicas-estandares/` | 6 — Gestión de políticas y estándares | 5% | David |
+| `punto7-devsecops/` | 7 — DevSecOps (SAST) | 10% | Gerónimo |
+
+Los puntos 8 (Reporte, 20%) y 9 (Sustentación, 30%) no son carpetas de
+código: el reporte es la presentación final que consolida la evidencia de
+los puntos 1-7 (arma eso aparte, no en este repo), y la sustentación es en
+vivo. Código de terceros clonado para trabajar (p. ej. el repo de Juice
+Shop para Punto 3/7) nunca se sube al repo — ver `.gitignore` y el README
+del punto correspondiente para el comando de clonado.
 
 ## Cómo subir tu parte (sin usar comandos de git)
 

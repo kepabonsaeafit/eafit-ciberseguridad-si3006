@@ -1,6 +1,6 @@
-# Evidencia — Despliegue de Juice Shop (P1)
+# Punto 1 — Despliegue del aplicativo
 
-**Responsable:** P1/P2
+**Responsable:** Kevin
 
 ## Qué va aquí
 
@@ -20,5 +20,5 @@ curl -I http://localhost:3000   # debe responder HTTP 200
 
 Luego abrir `http://localhost:3000` en el navegador.
 
-El paso a paso de explotación (P2, SQL injection en el login) y el reporte de
-4 slides van en `evidencias-p1-p2/` y `reporte-slides/`.
+El paso a paso de explotación (Punto 2, SQL injection en el login) y el
+reporte de 4 slides van en `../punto2-explotacion/`.
