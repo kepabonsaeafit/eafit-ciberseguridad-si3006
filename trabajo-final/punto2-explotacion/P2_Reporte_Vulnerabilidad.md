@@ -40,15 +40,15 @@ Vector: `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
 5. La respuesta HTTP 200 incluye un JWT cuyo payload decodificado contiene `"role":"admin"` y `"email":"admin@juice-sh.op"`.
 6. Verificar el acceso navegando a `/#/administration` (panel exclusivo de administrador).
 
-**Evidencia (figuras) — archivos fuente en `evidencias-p1-p2/`:**
+**Evidencia (figuras) — archivos fuente en este mismo directorio (`punto2-explotacion/`):**
 
 - **Figura 1.** Payload en el campo email del formulario de login.
-  `[ESPACIO PARA IMAGEN]` → `evidencias-p1-p2/01-payload-en-formulario-login.png`
+  `[ESPACIO PARA IMAGEN]` → `01-payload-en-formulario-login.png`
 - **Figura 2.** Petición interceptada en la pestaña **Network** de las DevTools de Chrome (equivalente al HTTP History de Burp), filtrada a `login`, mostrando el payload crudo enviado.
-  `[ESPACIO PARA IMAGEN]` → `evidencias-p1-p2/02-devtools-network-payload.png`
+  `[ESPACIO PARA IMAGEN]` → `02-devtools-network-payload.png`
   (headers y response del mismo request: `02-devtools-network-headers.png`, `02-devtools-network-response.png`; raw en texto: `02-raw-request-response.txt`)
 - **Figura 3.** Acceso al panel de administración autenticado como `admin@juice-sh.op`, sin conocer la contraseña real.
-  `[ESPACIO PARA IMAGEN]` → `evidencias-p1-p2/03-autenticado-como-admin.png`
+  `[ESPACIO PARA IMAGEN]` → `03-autenticado-como-admin.png`
 
 ---
 
@@ -68,7 +68,7 @@ Vector: `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
 
 ## Slide 4 — Remediación
 
-**Causa raíz:** `routes/login.ts:34` (repo oficial de Juice Shop, clonado en `src-remediacion/juice-shop/`) construye la consulta SQL concatenando `req.body.email` directamente dentro del string, sin sanitizar ni parametrizar la entrada del usuario.
+**Causa raíz:** `routes/login.ts:34` (repo oficial de Juice Shop, clonado en `../punto3-remediacion/juice-shop/`) construye la consulta SQL concatenando `req.body.email` directamente dentro del string, sin sanitizar ni parametrizar la entrada del usuario.
 
 **P3 — Corrección de código (consultas parametrizadas en Sequelize):**
 
@@ -103,4 +103,4 @@ models.sequelize.query(
 - **ISO/IEC 27001:2022 — A.8.28** (Secure coding): exige aplicar prácticas de codificación segura, específicamente el uso de consultas parametrizadas en vez de concatenación de entrada de usuario en comandos SQL.
 - **OWASP ASVS 5.3.4**: la aplicación debe usar consultas parametrizadas, ORMs seguros o escapado apropiado específico del motor de base de datos para prevenir inyección en toda interacción con la base de datos.
 
-**P7 — SAST:** el patrón vulnerable (concatenación de `req.body.*` dentro de un template literal pasado a `sequelize.query`) es detectable automáticamente por herramientas de análisis estático (Semgrep, CodeQL, SonarQube) siguiendo el flujo de datos no confiables (`req.body`) hasta un sumidero de ejecución SQL. Correr el SAST sobre `src-remediacion/juice-shop/routes/login.ts` debe marcar la línea 34 como hallazgo de SQL Injection.
+**P7 — SAST:** el patrón vulnerable (concatenación de `req.body.*` dentro de un template literal pasado a `sequelize.query`) es detectable automáticamente por herramientas de análisis estático (Semgrep, CodeQL, SonarQube) siguiendo el flujo de datos no confiables (`req.body`) hasta un sumidero de ejecución SQL. Correr el SAST sobre `../punto3-remediacion/juice-shop/routes/login.ts` debe marcar la línea 34 como hallazgo de SQL Injection.

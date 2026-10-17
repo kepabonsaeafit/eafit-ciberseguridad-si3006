@@ -17,5 +17,6 @@ Thumbs.db
 # Solo evidencia técnica puntual referenciada desde el código
 
 # Código fuente de terceros clonado para remediación/SAST (P3/P7) — no se versiona,
-# cada quien lo clona localmente con el comando documentado en src-remediacion/README.md
-src-remediacion/juice-shop/
+# cada quien lo clona localmente con el comando documentado en
+# trabajo-final/punto3-remediacion/README.md
+trabajo-final/punto3-remediacion/juice-shop/
