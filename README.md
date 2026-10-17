@@ -21,9 +21,9 @@ eafit-ciberseguridad-si3006/
 │   ├── punto1-despliegue/            → Kevin
 │   ├── punto2-explotacion/           → Kevin
 │   ├── punto3-remediacion/           → Santiago
-│   ├── punto4-arquitectura/          → (sin asignar)
-│   ├── punto5-herramienta-defensiva/ → (sin asignar)
-│   ├── punto6-politicas-estandares/  → David
+│   ├── punto4-arquitectura/          → Valentina
+│   ├── punto5-herramienta-defensiva/ → David
+│   ├── punto6-politicas-estandares/  → Gerónimo
 │   └── punto7-devsecops/             → Gerónimo
 └── ...
 ```
@@ -43,10 +43,10 @@ sube lo suyo ni crea carpetas propias sueltas en la raíz.
 | `punto1-despliegue/` | 1 — Despliegue del aplicativo | 5% | Kevin |
 | `punto2-explotacion/` | 2 — Explotación de una vulnerabilidad | 5% | Kevin |
 | `punto3-remediacion/` | 3 — Remediación de una vulnerabilidad | 10% | Santiago |
-| `punto4-arquitectura/` | 4 — Seguridad en Arquitectura | 5% | _(sin asignar)_ |
-| `punto5-herramienta-defensiva/` | 5 — Herramienta defensiva | 10% | _(sin asignar)_ |
-| `punto6-politicas-estandares/` | 6 — Gestión de políticas y estándares | 5% | David |
-| `punto7-devsecops/` | 7 — DevSecOps (SAST) | 10% | Gerónimo |
+| `punto4-arquitectura/` | 4 — Seguridad en Arquitectura | 5% | Valentina |
+| `punto5-herramienta-defensiva/` | 5 — Herramienta defensiva | 10% | David |
+| `punto6-politicas-estandares/` | 6 — Gestión de políticas y estándares | 5% | Gerónimo |
+| `punto7-devsecops/` | 7 — DevSecOps (SAST) | 10% | Gerónimo (si se recupera a tiempo) / David (si no, a partir del 23 de octubre) |
 
 Los puntos 8 (Reporte, 20%) y 9 (Sustentación, 30%) no son carpetas de
 código: el reporte es la presentación final que consolida la evidencia de
