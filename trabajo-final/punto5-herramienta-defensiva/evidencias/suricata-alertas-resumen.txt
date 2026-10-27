@@ -1,0 +1,22 @@
+Total alertas: 4
+
+[ALTA] sid 1000001  21:12:32.687 UTC  192.168.65.1:26141 -> 172.17.0.2:3000
+   regla : P5 JUICE-SHOP SQLi intento - tautologia OR en POST /rest/user/login
+   http  : POST /rest/user/login  -> status 200
+   body  : {"email":"' OR 1=1--","password":"cualquiercosa"}
+
+[CRITICA] sid 1000003  21:12:32.688 UTC  172.17.0.2:3000 -> 192.168.65.1:26141
+   regla : P5 JUICE-SHOP SQLi EXITOSO - login respondio 200 con token JWT tras payload de inyeccion
+   http  : POST /rest/user/login  -> status 200
+   body  : {"email":"' OR 1=1--","password":"cualquiercosa"}
+
+[ALTA] sid 1000002  21:12:33.753 UTC  192.168.65.1:16299 -> 172.17.0.2:3000
+   regla : P5 JUICE-SHOP SQLi intento - comilla + comentario SQL en POST /rest/user/login
+   http  : POST /rest/user/login  -> status 200
+   body  : {"email":"admin@juice-sh.op'--","password":"x"}
+
+[CRITICA] sid 1000003  21:12:33.754 UTC  172.17.0.2:3000 -> 192.168.65.1:16299
+   regla : P5 JUICE-SHOP SQLi EXITOSO - login respondio 200 con token JWT tras payload de inyeccion
+   http  : POST /rest/user/login  -> status 200
+   body  : {"email":"admin@juice-sh.op'--","password":"x"}
+

