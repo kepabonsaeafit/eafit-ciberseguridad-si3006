@@ -9,6 +9,9 @@ Juice Shop. Payload: `' OR 1=1--` en el campo email, cualquier valor en
 password. CVSS 3.1: **9.1 (Crítico)** —
 `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`. OWASP Top 10 A03 (Injection), CWE-89.
 
+Explotado contra el despliegue real en **GCP Compute Engine**
+(`http://34.56.167.155`, ver `../punto1-despliegue/`), no contra localhost.
+
 Causa raíz en el código: `routes/login.ts:34` del repo oficial de Juice Shop
 (ver `../punto3-remediacion/`) — concatena `req.body.email` directamente en
 el SQL en vez de usar parámetros vinculados. Ese fix es scope del **Punto 3
@@ -32,7 +35,11 @@ remediación no empiece de cero.
     (`"role":"admin"`). Complementa las capturas de pantalla.
 - `03-autenticado-como-admin.png` — **Figura 3.** Acceso al panel de
   administración (`/#/administration`) autenticado como `admin@juice-sh.op`,
-  sin conocer la contraseña real.
+  sin conocer la contraseña real. Captura de ventana completa: se ve la
+  barra de direcciones con `34.56.167.155`.
+- `00-challenge-login-admin-resuelto.png` — evidencia adicional: banner
+  nativo de Juice Shop ("You successfully solved a challenge: Login
+  Admin") al completar el bypass, confirmación independiente del impacto.
 - `exploit_sqli.js` — script (Playwright) que automatiza el login con el
   payload y captura las figuras 1 y 3 de forma reproducible.
 - `capture_devtools_network.js` — script (CDP/Node, sin Playwright) que
@@ -44,8 +51,14 @@ remediación no empiece de cero.
 - `P2_Reporte_Vulnerabilidad.md` — reporte estructurado de la vulnerabilidad
   (ver sección siguiente).
 
-Ambos scripts requieren Juice Shop corriendo en `localhost:3000` (ver
-`../punto1-despliegue/`).
+Ambos scripts automatizan el ataque contra `localhost:3000` y fueron el
+método usado para la primera versión de esta evidencia (despliegue local).
+Las figuras actuales (`00-*` a `03-*`) corresponden a una repetición
+**manual** del mismo ataque contra el despliegue real en GCP
+(`34.56.167.155`, ver `../punto1-despliegue/`), hecha así porque el entorno
+de automatización no tiene salida de red hacia la IP pública de la VM. El
+payload, los pasos y el resultado (JWT con `role: admin`) son idénticos en
+ambos casos — solo cambia el host.
 
 ## Reporte (4 slides)
 

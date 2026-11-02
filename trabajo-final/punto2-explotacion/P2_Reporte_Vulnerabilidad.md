@@ -12,7 +12,7 @@
 
 **Scope:** `POST /rest/user/login` (formulario de login, reto "Login Admin" de Juice Shop)
 
-**Affected devices:** instancia de Juice Shop desplegada en Docker local (`juice-shop:3000`); aplica a cualquier despliegue que use el mismo código fuente (`routes/login.ts`).
+**Affected devices:** instancia de Juice Shop desplegada en un contenedor Docker sobre una VM de Google Cloud Compute Engine, expuesta públicamente en `34.56.167.155` (puerto 80 → 3000 del contenedor); aplica a cualquier despliegue que use el mismo código fuente (`routes/login.ts`), local o en la nube.
 
 **CVSS v3.1:** **9.1 (Crítico)**
 Vector: `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
@@ -33,7 +33,7 @@ Vector: `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
 
 ## Slide 2 — Pasos de reproducción
 
-1. Navegar a `http://localhost:3000/#/login`.
+1. Navegar a `http://34.56.167.155/#/login` (instancia pública en GCP Compute Engine).
 2. En el campo **email**, ingresar: `' OR 1=1--`
 3. En el campo **password**, ingresar cualquier valor (no se valida).
 4. Enviar el formulario / interceptar la petición `POST /rest/user/login`.
@@ -47,8 +47,10 @@ Vector: `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
 - **Figura 2.** Petición interceptada en la pestaña **Network** de las DevTools de Chrome (equivalente al HTTP History de Burp), filtrada a `login`, mostrando el payload crudo enviado.
   `[ESPACIO PARA IMAGEN]` → `02-devtools-network-payload.png`
   (headers y response del mismo request: `02-devtools-network-headers.png`, `02-devtools-network-response.png`; raw en texto: `02-raw-request-response.txt`)
-- **Figura 3.** Acceso al panel de administración autenticado como `admin@juice-sh.op`, sin conocer la contraseña real.
+- **Figura 3.** Acceso al panel de administración autenticado como `admin@juice-sh.op`, sin conocer la contraseña real. La captura incluye la barra de direcciones del navegador mostrando `34.56.167.155`, confirmando que el ataque se ejecutó contra el servidor público, no contra localhost.
   `[ESPACIO PARA IMAGEN]` → `03-autenticado-como-admin.png`
+- **Evidencia adicional.** Banner nativo de Juice Shop confirmando "You successfully solved a challenge: Login Admin", generado automáticamente por la aplicación al completar el bypass — confirmación independiente del impacto, sin depender de nuestra propia interpretación del JWT.
+  `[ESPACIO PARA IMAGEN]` → `00-challenge-login-admin-resuelto.png`
 
 ---
 
