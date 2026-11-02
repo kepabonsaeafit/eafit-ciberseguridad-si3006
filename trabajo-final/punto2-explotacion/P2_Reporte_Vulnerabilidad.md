@@ -62,7 +62,7 @@ Vector: `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
 
 **CWE:** CWE-89 — Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
 
-**OWASP Top 10:** A03 — Injection
+**OWASP Top 10:2025:** A05 — Injection
 
 **MITRE ATT&CK:** T1190 — Exploit Public-Facing Application (el atacante explota una aplicación expuesta públicamente para obtener acceso inicial sin credenciales)
 

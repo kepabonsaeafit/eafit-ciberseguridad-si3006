@@ -7,7 +7,7 @@
 SQL Injection en el login (`POST /rest/user/login`) — reto "Login Admin" de
 Juice Shop. Payload: `' OR 1=1--` en el campo email, cualquier valor en
 password. CVSS 3.1: **9.1 (Crítico)** —
-`AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`. OWASP Top 10 A03 (Injection), CWE-89.
+`AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`. OWASP Top 10:2025 A05 (Injection), CWE-89.
 
 Explotado contra el despliegue real en **GCP Compute Engine**
 (`http://34.56.167.155`, ver `../punto1-despliegue/`), no contra localhost.
@@ -70,5 +70,5 @@ Estructura:
 
 1. Qué es la vulnerabilidad, CVSS, alcance, afectados.
 2. Pasos de explotación con las 3 figuras de evidencia.
-3. Impacto + OWASP A03 + CWE-89.
+3. Impacto + OWASP A05:2025 + CWE-89.
 4. Corrección recomendada (bridge hacia Punto 3: parametrizar la consulta).
