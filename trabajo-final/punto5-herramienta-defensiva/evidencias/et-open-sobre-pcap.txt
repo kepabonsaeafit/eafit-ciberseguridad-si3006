@@ -1,0 +1,9 @@
+Ruleset: Emerging Threats Open (suricata-update), 53282 reglas activas
+Pcap analizado: evidencias/p5-ataque-sqli.pcap (tráfico normal + ataque SQLi del Punto 2)
+
+Alertas totales:                         57
+  de ellas "TCPv4 invalid checksum":     57   (ruido: checksum offload de la red de Docker)
+  alertas relacionadas con SQLi/login:   0
+
+Alertas que NO son de checksum:
+  (ninguna)

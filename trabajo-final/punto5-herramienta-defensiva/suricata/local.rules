@@ -1,0 +1,53 @@
+# =============================================================================
+# Punto 5 — Herramienta defensiva (Blue Team)
+# Reglas Suricata para detectar el ataque del Punto 2:
+#   SQL Injection en el login de Juice Shop (POST /rest/user/login),
+#   payload  ' OR 1=1--  en el campo "email" del JSON.
+#
+# Escalado de severidad:
+#   1000001  intento: tautología  ' OR 1=1  en el body del login     (priority 2)
+#   1000002  intento: comentario SQL  '--  /  '#  /  '/*  tras comilla (priority 2)
+#   1000003  ÉXITO:   la misma conexión hizo un intento de SQLi y el
+#            servidor respondió 200 con un token JWT  ->  bypass logrado (priority 1)
+#
+# Los sid 1000000-1999999 están reservados para reglas locales.
+# =============================================================================
+
+# --- 1. Intento: tautología OR 1=1 (o 'a'='a', etc.) en el body del login ----
+alert http any any -> any any (msg:"P5 JUICE-SHOP SQLi intento - tautologia OR en POST /rest/user/login"; \
+    flow:established,to_server; \
+    http.method; content:"POST"; \
+    http.uri; content:"/rest/user/login"; \
+    http.request_body; content:"'"; content:"OR"; nocase; distance:0; \
+    pcre:"/'\s*OR\s+['\x22]?(\w+)['\x22]?\s*=\s*['\x22]?\1/i"; \
+    flowbits:set,p5.sqli.login; \
+    classtype:web-application-attack; priority:2; \
+    reference:url,cwe.mitre.org/data/definitions/89.html; reference:url,owasp.org/Top10/A03_2021-Injection/; \
+    metadata:attack_target Web_Server, signature_severity Major, punto P5; \
+    sid:1000001; rev:3;)
+
+# --- 2. Intento: comilla seguida de comentario SQL (cierra la consulta) -------
+#     Cubre variantes como  admin@juice-sh.op'--  que no usan OR 1=1.
+alert http any any -> any any (msg:"P5 JUICE-SHOP SQLi intento - comilla + comentario SQL en POST /rest/user/login"; \
+    flow:established,to_server; \
+    http.method; content:"POST"; \
+    http.uri; content:"/rest/user/login"; \
+    http.request_body; pcre:"/\x22email\x22\s*:\s*\x22[^\x22]*'\s*(--|#|\/\*)/i"; \
+    flowbits:set,p5.sqli.login; \
+    classtype:web-application-attack; priority:2; \
+    reference:url,cwe.mitre.org/data/definitions/89.html; \
+    metadata:attack_target Web_Server, signature_severity Major, punto P5; \
+    sid:1000002; rev:2;)
+
+# --- 3. ÉXITO: tras el intento, el servidor entregó un token de sesión --------
+#     Es la alerta que más importa al SOC: el ataque no solo se intentó,
+#     sino que funcionó (login como admin sin contraseña).
+alert http any any -> any any (msg:"P5 JUICE-SHOP SQLi EXITOSO - login respondio 200 con token JWT tras payload de inyeccion"; \
+    flow:established,to_client; \
+    flowbits:isset,p5.sqli.login; \
+    http.stat_code; content:"200"; \
+    http.response_body; content:"|22|token|22|"; content:"eyJ"; distance:0; \
+    classtype:successful-admin; priority:1; \
+    reference:url,cwe.mitre.org/data/definitions/89.html; \
+    metadata:attack_target Web_Server, signature_severity Critical, punto P5; \
+    sid:1000003; rev:2;)

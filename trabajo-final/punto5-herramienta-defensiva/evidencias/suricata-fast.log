@@ -1,0 +1,4 @@
+10/27/2026-21:12:32.687798  [**] [1:1000001:3] P5 JUICE-SHOP SQLi intento - tautologia OR en POST /rest/user/login [**] [Classification: Web Application Attack] [Priority: 2] {TCP} 192.168.65.1:26141 -> 172.17.0.2:3000
+10/27/2026-21:12:32.688509  [**] [1:1000003:2] P5 JUICE-SHOP SQLi EXITOSO - login respondio 200 con token JWT tras payload de inyeccion [**] [Classification: Successful Administrator Privilege Gain] [Priority: 1] {TCP} 172.17.0.2:3000 -> 192.168.65.1:26141
+10/27/2026-21:12:33.753397  [**] [1:1000002:2] P5 JUICE-SHOP SQLi intento - comilla + comentario SQL en POST /rest/user/login [**] [Classification: Web Application Attack] [Priority: 2] {TCP} 192.168.65.1:16299 -> 172.17.0.2:3000
+10/27/2026-21:12:33.754282  [**] [1:1000003:2] P5 JUICE-SHOP SQLi EXITOSO - login respondio 200 con token JWT tras payload de inyeccion [**] [Classification: Successful Administrator Privilege Gain] [Priority: 1] {TCP} 172.17.0.2:3000 -> 192.168.65.1:16299

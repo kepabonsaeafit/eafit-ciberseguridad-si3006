@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>P5 — Arquitectura de detección</title>
+<style>
+  :root {
+    --ink: #1d2433; --muted: #5b6475; --line: #c9cfdb;
+    --attack: #c0392b; --attack-bg: #fdecea;
+    --app: #2c5d9e; --app-bg: #e8f0fb;
+    --ids: #1e7a4f; --ids-bg: #e6f5ec;
+    --siem: #7a4f1e; --siem-bg: #fbf1e3;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1600px; height: 740px; background: #fff; color: var(--ink);
+         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 48px 56px; }
+  h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 6px; }
+  .stage { position: relative; height: 560px; margin-top: 28px; }
+  .box { position: absolute; border: 2px solid; border-radius: 14px; padding: 16px 20px; background: #fff; }
+  .box h2 { font-size: 21px; font-weight: 700; margin-bottom: 6px; }
+  .box p { font-size: 16px; line-height: 1.4; color: var(--ink); }
+  .box code { font-family: Menlo, monospace; font-size: 15px; background: rgba(0,0,0,.05); padding: 1px 5px; border-radius: 4px; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 6px; }
+  .attacker { left: 0; top: 40px; width: 300px; border-color: var(--attack); background: var(--attack-bg); }
+  .attacker .tag { color: var(--attack); }
+  .app { left: 560px; top: 40px; width: 330px; border-color: var(--app); background: var(--app-bg); }
+  .app .tag { color: var(--app); }
+  .ids { left: 540px; top: 330px; width: 380px; border-color: var(--ids); background: var(--ids-bg); }
+  .ids .tag { color: var(--ids); }
+  .pcap { left: 0; top: 330px; width: 300px; border-color: var(--line); }
+  .pcap .tag { color: var(--muted); }
+  .siem { left: 1130px; top: 330px; width: 360px; border-color: var(--siem); background: var(--siem-bg); }
+  .siem .tag { color: var(--siem); }
+  .soc { left: 1130px; top: 40px; width: 360px; border-color: var(--attack); }
+  .soc .tag { color: var(--attack); }
+  .sev { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .pill { font-size: 14px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+  .p1 { background: var(--attack); color: #fff; }
+  .p2 { background: #e67e22; color: #fff; }
+  .lbl { position: absolute; font-size: 15px; color: var(--muted); background: #fff; padding: 2px 6px; }
+  svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+</style>
+</head>
+<body>
+  <h1>Dónde se detecta el ataque del Punto 2</h1>
+  <div class="sub">Suricata escucha una copia del tráfico (no está en línea): ve el payload y la respuesta, alerta y no bloquea.</div>
+  <div class="stage">
+    <svg viewBox="0 0 1488 640" preserveAspectRatio="none">
+      <defs>
+        <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5b6475"/></marker>
+        <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+      </defs>
+      <!-- atacante -> app -->
+      <line x1="302" y1="110" x2="552" y2="110" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
+      <!-- app -> atacante (token) -->
+      <line x1="556" y1="170" x2="306" y2="170" stroke="#5b6475" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#a)"/>
+      <!-- app -> ids (copia del tráfico) -->
+      <line x1="725" y1="232" x2="725" y2="322" stroke="#1e7a4f" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#a)"/>
+      <!-- app -> pcap -->
+      <path d="M600 236 Q 450 280 302 330" fill="none" stroke="#9aa3b5" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#a)"/>
+      <!-- ids -> siem -->
+      <line x1="922" y1="420" x2="1122" y2="420" stroke="#1e7a4f" stroke-width="3" marker-end="url(#a)"/>
+      <!-- siem -> soc -->
+      <line x1="1310" y1="328" x2="1310" y2="240" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
+    </svg>
+
+    <div class="lbl" style="left:318px;top:52px;">POST /rest/user/login<br><b style="color:#c0392b">email = ' OR 1=1--</b></div>
+    <div class="lbl" style="left:345px;top:180px;">200 OK + JWT de admin</div>
+    <div class="lbl" style="left:740px;top:262px;">copia del tráfico (SPAN/TAP)</div>
+    <div class="lbl" style="left:930px;top:385px;">eve.json</div>
+    <div class="lbl" style="left:1322px;top:272px;">alerta</div>
+
+    <div class="box attacker"><div class="tag">Atacante</div><h2>Navegador / curl</h2>
+      <p>Sin credenciales, desde Internet. Manda el payload en el campo <code>email</code>.</p></div>
+
+    <div class="box app"><div class="tag">Aplicación</div><h2>Juice Shop :3000</h2>
+      <p>Contenedor Docker del Punto 1. La consulta SQL concatena el email y devuelve el usuario admin.</p></div>
+
+    <div class="box pcap"><div class="tag">Monitoreo / forense</div><h2>tcpdump → Wireshark</h2>
+      <p>Graba el <code>.pcap</code>. Sirve para ver el ataque y para investigar después, pero no genera alertas.</p></div>
+
+    <div class="box ids"><div class="tag">Blue Team · IDS</div><h2>Suricata 8 + local.rules</h2>
+      <p><code>sid 1000001</code> tautología <code>' OR 1=1</code><br>
+         <code>sid 1000002</code> comilla + comentario <code>'--</code><br>
+         <code>sid 1000003</code> la respuesta trae un token: el ataque funcionó</p></div>
+
+    <div class="box siem"><div class="tag">Centralización</div><h2>SIEM (Wazuh / Elastic)</h2>
+      <p>Recibe el <code>eve.json</code>, lo cruza con otros logs y dispara la notificación (correo, Slack, ticket).</p></div>
+
+    <div class="box soc"><div class="tag">SOC</div><h2>Analista de turno</h2>
+      <p>Prioriza por severidad:</p>
+      <div class="sev"><span class="pill p1">P1 · SQLi exitoso</span><span class="pill p2">P2 · intento</span></div></div>
+  </div>
+</body>
+</html>
